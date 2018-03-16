@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">MusicPlayer</string>
+    <string name="songList_name">All Music</string>
+    <string name="songSearch_name">Search</string>
+
+    <!-- Music Player Strings -->
+    <string name="playerIcon_SongIcon">Song Icon</string>
+    <string name="playerButtons_previous_description">Previous Button</string>
+    <string name="playerButtons_rewind_description">Rewind Button</string>
+    <string name="playerButtons_playStop_description">Play and Stop Button</string>
+    <string name="playerButtons_forward_description">Forward Button</string>
+    <string name="playerButtons_next_description">Next Button</string>
+    <string name="playerButtons_search_description">to Search Section</string>
+    <string name="playerButtons_SongList_description">to song list section</string>
+
+    <!-- Song Search Strings -->
+
+    <string name="SearchBoxHint">Search Songs</string>
+
+</resources>
