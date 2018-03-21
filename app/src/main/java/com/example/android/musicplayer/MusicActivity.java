@@ -1,55 +1,55 @@
 package com.example.android.musicplayer;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class MusicActivity extends AppCompatActivity {
-    private String name;
+
+    private ArrayList<Song> songs;
+    private SongAdapter adapter;
+    private EditText editText;
+    String[] songName;
+    String[] songArtist;
+    int[] songImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music);
 
+        songName = new String [] {"song", "1song", "2song", "3song"};
+        songArtist = new String[] {"artist", "artist3", "artist3", "artist2"};
+        songImage = new int[] {R.drawable.ic_music_icon, R.drawable.ic_music_icon, R.drawable.ic_music_icon, R.drawable.ic_music_icon};
+
         //Create a list of songs
 
-        final ArrayList<Song> songs = new ArrayList<Song>();
+        songs = new ArrayList<Song>();
 
-        songs.add(new Song("song", "artist", R.drawable.ic_music_icon));
-        songs.add(new Song("1song1", "artist", R.drawable.ic_music_icon));
-        songs.add(new Song("2song2", "2artist2", R.drawable.ic_music_icon));
-        songs.add(new Song("3song3", "3artist3", R.drawable.ic_music_icon));
-        songs.add(new Song("4song4", "artist", R.drawable.ic_music_icon));
-        songs.add(new Song("5song5", "2artist2", R.drawable.ic_music_icon));
-        songs.add(new Song("6song6", "artist", R.drawable.ic_music_icon));
-        songs.add(new Song("7song7", "1artist1", R.drawable.ic_music_icon));
-        songs.add(new Song("8song8", "1artist1", R.drawable.ic_music_icon));
-        songs.add(new Song("9song9", "artist", R.drawable.ic_music_icon));
-        songs.add(new Song("10song10", "1artist1", R.drawable.ic_music_icon));
+        for (int i = 0; i < songName.length; i++){
+            Song sng = new Song(songName[i], songArtist[i]);
+            songs.add(sng);
+        }
 
+        adapter = new SongAdapter(this, songs);
 
-        final SongAdapter adapter = new SongAdapter(this, songs);
-
-        final ListView listView = (ListView) findViewById(R.id.search_list_view);
+        ListView listView = (ListView) findViewById(R.id.search_list_view);
 
         listView.setAdapter(adapter);
 
-        final EditText searchView = (EditText) findViewById(R.id.searchView);
+        editText = (EditText) findViewById(R.id.searchView);
 
-        searchView.addTextChangedListener(new TextWatcher() {
+        editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                String text = editText.getText().toString().toLowerCase(Locale.getDefault());
+                adapter.filter(text);
             }
 
             @Override
@@ -59,31 +59,7 @@ public class MusicActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                ArrayList<Song> matches = new ArrayList<Song>();
-                // MI IMPLEMENTACION PARA SACAR ALGO GRACIAS A STACKOVERFLOW
-                for (Song song: songs){
-                    if (song.getSongName().contains(searchView.getText().toString())) {
-                        Log.i("Song Name IS TRUE", song.getSongName());
-                        matches.add(new Song(song.getSongName(), song.getSongArtist(), song.getSongImage()));
-                    }else{
-                        Log.i("Song Name IS FALSE", song.getSongName());
-                    }
-                }
-                for(int i=0; i < matches.size(); i++){
-                    Log.i("SEE_ARRAYLIST_CONTENT:", matches.get(i).toString());
-                }
-                listView.setAdapter(adapter);
 
-                //FIN DE IMPLEMENTACION
-            }
-        });
-
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Intent intent = new Intent(MusicActivity.this, ArtistInfoActivity.class);
-                startActivity(intent);
             }
         });
 
