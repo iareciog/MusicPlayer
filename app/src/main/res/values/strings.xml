@@ -17,4 +17,7 @@
 
     <string name="SearchBoxHint">Search Songs</string>
 
+    <string name="songDescription">Song description exaple</string>
+    <string name="emptySoundMessage">No sound are selected</string>
+
 </resources>

@@ -1,6 +1,5 @@
 package com.example.android.musicplayer;
 
-
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -9,14 +8,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class SongAdapter extends BaseAdapter{
 
+public class SongAdapter extends BaseAdapter{
+    //Declared variables
     private Context mContext;
     private LayoutInflater inflater;
     private final ArrayList<Song> songs;
@@ -33,6 +34,7 @@ public class SongAdapter extends BaseAdapter{
     public class ViewHolder{
         TextView songName;
         TextView songArtist;
+        ImageView songImage;
     }
 
     @Override
@@ -49,8 +51,9 @@ public class SongAdapter extends BaseAdapter{
     public long getItemId(int position){
         return position;
     }
-
-
+    /*
+     * Created the song adapter for the listView
+     */
     @NonNull
     @Override
     public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -61,27 +64,36 @@ public class SongAdapter extends BaseAdapter{
             // Locate the TextViews in list_view.xml;
             holder.songName = (TextView) convertView.findViewById(R.id.songName);
             holder.songArtist = (TextView) convertView.findViewById(R.id.songArtist);
+            holder.songImage = (ImageView) convertView.findViewById(R.id.SongImage);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
+        /*
+         * Set the songName, songArtist and SongImage on a new List
+         */
         holder.songName.setText(songsList.get(position).getSongName());
         holder.songArtist.setText(songsList.get(position).getSongArtist());
+        holder.songImage.setImageResource(songsList.get(position).getSongImage());
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, ArtistInfoActivity.class);
-
+                //Insert extra data to use it in the intent
                 intent.putExtra("songName",(songsList.get(position).getSongName()));
                 intent.putExtra("songArtist",(songsList.get(position).getSongArtist()));
+                intent.putExtra("songImage",(songsList.get(position).getSongImage()));
                 mContext.startActivity(intent);
             }
         });
         return convertView;
     }
 
-    //Filter class
+    /*
+     * Filter function
+     * Search songs on the ArrayList and filter it.
+     */
     public void filter(String charText){
         charText = charText.toLowerCase(Locale.getDefault());
         songsList.clear();

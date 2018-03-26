@@ -8,6 +8,9 @@ public class Song {
     /** Song Artist */
     private String mSongArtist;
 
+    /** Song Image */
+    private int mSongImage;
+
     /*
         Create a new Music object.
 
@@ -15,9 +18,10 @@ public class Song {
         @param artist -> is the song artist name.
      */
 
-    public Song(String SongName, String SongArtist){
-        mSongName = SongName;
-        mSongArtist = SongArtist;
+    public Song(String songName, String songArtist, int songImage){
+        mSongName = songName;
+        mSongArtist = songArtist;
+        mSongImage = songImage;
     }
 
     /**
@@ -31,5 +35,11 @@ public class Song {
      **/
 
     public String getSongArtist() { return mSongArtist; }
+
+    /**
+     * @return the song image.
+     */
+
+    public int getSongImage() { return mSongImage; }
 
 }

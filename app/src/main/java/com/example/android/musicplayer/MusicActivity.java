@@ -10,30 +10,26 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class MusicActivity extends AppCompatActivity {
+import static com.example.android.musicplayer.MainActivity.songArtistArr;
+import static com.example.android.musicplayer.MainActivity.songImageArr;
+import static com.example.android.musicplayer.MainActivity.songNameArr;
 
-    private ArrayList<Song> songs;
+public class MusicActivity extends AppCompatActivity {
+    //Declaration of Variables
     private SongAdapter adapter;
     private EditText editText;
-    String[] songName;
-    String[] songArtist;
-    int[] songImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music);
 
-        songName = new String [] {"song", "1song", "2song", "3song"};
-        songArtist = new String[] {"artist", "artist3", "artist3", "artist2"};
-        songImage = new int[] {R.drawable.ic_music_icon, R.drawable.ic_music_icon, R.drawable.ic_music_icon, R.drawable.ic_music_icon};
-
         //Create a list of songs
 
-        songs = new ArrayList<Song>();
+        ArrayList<Song> songs = new ArrayList<Song>();
 
-        for (int i = 0; i < songName.length; i++){
-            Song sng = new Song(songName[i], songArtist[i]);
+        for (int i = 0; i < songNameArr.length; i++){
+            Song sng = new Song(songNameArr[i], songArtistArr[i], songImageArr[i]);
             songs.add(sng);
         }
 

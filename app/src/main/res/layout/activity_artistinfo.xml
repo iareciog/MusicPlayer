@@ -6,7 +6,7 @@
     tools:context="com.example.android.musicplayer.MainActivity">
 
     <ImageView
-        android:id="@+id/SongImage"
+        android:id="@+id/songImage"
         android:layout_width="270dp"
         android:layout_height="270dp"
         android:contentDescription="@string/playerIcon_SongIcon"
@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_below="@id/SongImage"
+        android:layout_below="@id/songImage"
         android:layout_marginBottom="20dp">
 
         <TextView
@@ -39,6 +39,14 @@
             android:textAlignment="center"
             android:textColor="@android:color/black"
             tools:text="test_artist"/>
+
+        <TextView
+            android:id="@+id/song_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:layout_marginTop="20dp"
+            tools:text="test_description"/>
 
     </LinearLayout>
 </RelativeLayout>
