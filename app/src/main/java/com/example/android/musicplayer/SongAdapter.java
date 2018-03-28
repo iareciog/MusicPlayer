@@ -21,13 +21,13 @@ public class SongAdapter extends BaseAdapter{
     private Context mContext;
     private LayoutInflater inflater;
     private final ArrayList<Song> songs;
-    private List<Song> songsList = null;
+    private List<Song> songsList;
 
     public SongAdapter(Context context, List<Song> songsList){
         mContext = context;
         this.songsList = songsList;
         inflater = LayoutInflater.from(mContext);
-        this.songs = new ArrayList<Song>();
+        this.songs = new ArrayList<>();
         this.songs.addAll(songsList);
     }
 
@@ -52,9 +52,15 @@ public class SongAdapter extends BaseAdapter{
         return position;
     }
 
-    /*
-     * Created the song adapter for the listView
-     */
+    /**
+     * Auto-generated Song Adapter for the listView
+     *
+     * @param position -> position
+     * @param convertView -> View
+     * @param parent -> ViewGroup
+     *
+     * @return adapter view
+     **/
     @NonNull
     @Override
     public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -63,20 +69,16 @@ public class SongAdapter extends BaseAdapter{
             holder = new ViewHolder();
             convertView = inflater.inflate(R.layout.list_item, null);
             // Locate the TextViews in list_view.xml;
-            holder.songName = (TextView) convertView.findViewById(R.id.songName);
-            holder.songArtist = (TextView) convertView.findViewById(R.id.songArtist);
-            holder.songImage = (ImageView) convertView.findViewById(R.id.SongImage);
+            holder.songName = convertView.findViewById(R.id.songName);
+            holder.songArtist = convertView.findViewById(R.id.songArtist);
+            holder.songImage = convertView.findViewById(R.id.SongImage);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        /**
+        /*
          * Set the values on a new list
-         *
-         * @param songName
-         * @param songArtist
-         * @param songImage
-         **/
+         */
         holder.songName.setText(songsList.get(position).getSongName());
         holder.songArtist.setText(songsList.get(position).getSongArtist());
         holder.songImage.setImageResource(songsList.get(position).getSongImage());
@@ -85,12 +87,9 @@ public class SongAdapter extends BaseAdapter{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, ArtistInfoActivity.class);
-                /**
+                /*
                  * Insert extra data to use it in the intent
-                 * @param songName
-                 * @param songArtist
-                 * @param songImage
-                 * */
+                 */
                 intent.putExtra("songName",(songsList.get(position).getSongName()));
                 intent.putExtra("songArtist",(songsList.get(position).getSongArtist()));
                 intent.putExtra("songImage",(songsList.get(position).getSongImage()));

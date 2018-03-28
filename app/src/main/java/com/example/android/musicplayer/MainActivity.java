@@ -90,7 +90,6 @@ public class MainActivity extends AppCompatActivity {
                     songArtist = songArtistArr[songPos];
                     songImage = songImageArr[songPos];
 
-
                     songNameText.setText(songName);
                     songArtistText.setText(songArtist);
                     songImageImg.setImageResource(songImage);
@@ -137,10 +136,11 @@ public class MainActivity extends AppCompatActivity {
                     songName = songNameArr[songPos];
                     songArtist = songArtistArr[songPos];
                     songImage = songImageArr[songPos];
+
+                    songNameText.setText(songName);
+                    songArtistText.setText(songArtist);
+                    songImageImg.setImageResource(songImage);
                 }
-                songNameText.setText(songName);
-                songArtistText.setText(songArtist);
-                songImageImg.setImageResource(songImage);
             }
         });
 
@@ -173,6 +173,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    /**
+     * @return the song position.
+     **/
+
     private int getSongPos() {
         int pos = 0;
         for (int i = 0; i < songNameArr.length; i++) {
@@ -182,6 +187,10 @@ public class MainActivity extends AppCompatActivity {
         }
         return pos;
     }
+
+    /**
+     * @return the array length.
+     **/
 
     private int getArrayLength(){ return songNameArr.length; }
 }

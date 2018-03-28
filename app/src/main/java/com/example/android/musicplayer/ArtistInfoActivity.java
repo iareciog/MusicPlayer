@@ -39,7 +39,7 @@ public class ArtistInfoActivity extends AppCompatActivity {
             textSongName.setText(songName);
             textSongArtist.setText(songArtist);
             imgSongImage.setImageResource(songImage);
-            TextView songDescription = (TextView) findViewById(R.id.song_description);
+            TextView songDescription = findViewById(R.id.song_description);
             songDescription.setText(R.string.songDescription);
         }
 
