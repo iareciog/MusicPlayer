@@ -83,19 +83,14 @@ public class MainActivity extends AppCompatActivity {
                 if (songName != null) {
                     if(songPos - 1 >= 0){
                         songPos = songPos - 1;
-                    }else{
-                        songPos = 0;
-                    }
-                    if (songPos > 0) {
-                        songName = songNameArr[songPos];
-                        songArtist = songArtistArr[songPos];
-                        songImage = songImageArr[songPos];
                     } else {
                         songPos = 0;
-                        songName = songNameArr[0];
-                        songArtist = songArtistArr[0];
-                        songImage = songImageArr[0];
                     }
+                    songName = songNameArr[songPos];
+                    songArtist = songArtistArr[songPos];
+                    songImage = songImageArr[songPos];
+
+
                     songNameText.setText(songName);
                     songArtistText.setText(songArtist);
                     songImageImg.setImageResource(songImage);
