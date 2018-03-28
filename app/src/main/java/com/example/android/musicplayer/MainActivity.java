@@ -22,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
     static int[] songImageArr;
     static ArrayList<Song> songs;
     private int songPos;
+    private ImageView songImageImg;
+    private TextView songArtistText;
+    private TextView songNameText;
 
     private boolean isPlay = false;
     private ImageView playStopButton;
@@ -46,9 +49,10 @@ public class MainActivity extends AppCompatActivity {
         ImageView nextButton = findViewById(R.id.next_button);
         ImageView songListButton = findViewById(R.id.songList_button);
         ImageView songListButtonNoSearch = findViewById(R.id.artistInfo_button);
-        final TextView songNameText = findViewById(R.id.songName);
-        final TextView songArtistText = findViewById(R.id.songArtist);
-        final ImageView songImageImg = findViewById(R.id.songImage);
+
+        songNameText = findViewById(R.id.songName);
+        songArtistText = findViewById(R.id.songArtist);
+        songImageImg = findViewById(R.id.songImage);
 
         songs = new ArrayList<>();
 
