@@ -7,7 +7,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 //Import static variables for compare if exist a song.
+
 import static com.example.android.musicplayer.ArtistInfoActivity.songName;
 import static com.example.android.musicplayer.ArtistInfoActivity.songArtist;
 import static com.example.android.musicplayer.ArtistInfoActivity.songImage;
@@ -17,9 +20,11 @@ public class MainActivity extends AppCompatActivity {
     static String[] songNameArr;
     static String[] songArtistArr;
     static int[] songImageArr;
+    static ArrayList<Song> songs;
+    private int songPos;
 
-    boolean isPlay = false;
-    ImageView playStopButton;
+    private boolean isPlay = false;
+    private ImageView playStopButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,19 +33,29 @@ public class MainActivity extends AppCompatActivity {
 
         //Created 3 arrays with the info in every position
 
-        songNameArr = new String [] {"song", "1song", "2song", "3song"};
-        songArtistArr = new String[] {"artist", "artist3", "artist3", "artist2"};
-        songImageArr = new int[] {R.drawable.ic_music_icon, R.drawable.ic_music_icon, R.drawable.ic_music_icon, R.drawable.ic_music_icon};
+        songNameArr = new String[]{"song", "1song", "2song", "3song"};
+        songArtistArr = new String[]{"artist", "artist3", "artist3", "artist2"};
+        songImageArr = new int[]{R.drawable.ic_music_icon, R.drawable.ic_music_icon, R.drawable.ic_music_icon, R.drawable.ic_music_icon};
 
         //Get the objects used in this program.
 
-        ImageView previousButton = (ImageView) findViewById(R.id.previous_button);
-        ImageView rewindButton = (ImageView) findViewById(R.id.rewind_button);
-        playStopButton = (ImageView) findViewById(R.id.playStop_button);
-        ImageView forwardButton = (ImageView) findViewById(R.id.forward_button);
-        ImageView nextButton = (ImageView) findViewById(R.id.next_button);
-        ImageView songListButton = (ImageView) findViewById(R.id.songList_button);
-        ImageView songListButtonNoSearch = (ImageView) findViewById(R.id.artistInfo_button);
+        ImageView previousButton = findViewById(R.id.previous_button);
+        ImageView rewindButton = findViewById(R.id.rewind_button);
+        playStopButton = findViewById(R.id.playStop_button);
+        ImageView forwardButton = findViewById(R.id.forward_button);
+        ImageView nextButton = findViewById(R.id.next_button);
+        ImageView songListButton = findViewById(R.id.songList_button);
+        ImageView songListButtonNoSearch = findViewById(R.id.artistInfo_button);
+        final TextView songNameText = findViewById(R.id.songName);
+        final TextView songArtistText = findViewById(R.id.songArtist);
+        final ImageView songImageImg = findViewById(R.id.songImage);
+
+        songs = new ArrayList<>();
+
+        for (int i = 0; i < songNameArr.length; i++) {
+            Song sng = new Song(songNameArr[i], songArtistArr[i], songImageArr[i]);
+            songs.add(sng);
+        }
 
         /*
          * Check if songName and SongArtist aren't equal to null
@@ -48,11 +63,7 @@ public class MainActivity extends AppCompatActivity {
          * and sets the song data on their TextViews
          */
 
-        if(songName != null && songArtist != null){
-            TextView songNameText = (TextView) findViewById(R.id.songName);
-            TextView songArtistText = (TextView) findViewById(R.id.songArtist);
-            ImageView songImageImg = (ImageView) findViewById(R.id.songImage);
-
+        if (songName != null && songArtist != null) {
             playStopButton.setImageResource(R.drawable.ic_stop_icon);
 
             songNameText.setText(songName);
@@ -63,7 +74,25 @@ public class MainActivity extends AppCompatActivity {
         previousButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if (songName != null) {
+                    songPos = getSongPos();
+                    if (songNameArr[songPos].contains(songName)) {
+                        int pos = songPos;
+                        int newIndex = pos - 1;
+                        if (newIndex > 0) {
+                            songName = songNameArr[newIndex];
+                            songArtist = songArtistArr[newIndex];
+                            songImage = songImageArr[newIndex];
+                        } else {
+                            songName = songNameArr[0];
+                            songArtist = songArtistArr[0];
+                            songImage = songImageArr[0];
+                        }
+                        songNameText.setText(songName);
+                        songArtistText.setText(songArtist);
+                        songImageImg.setImageResource(songImage);
+                    }
+                }
             }
         });
 
@@ -78,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Simple play/stop switch for this player prototype (non functional for a real music player)
-                if(isPlay){
+                if (isPlay) {
                     isPlay = false;
                     playStopButton.setImageResource(R.drawable.ic_stop_icon);
                 } else {
@@ -99,7 +128,23 @@ public class MainActivity extends AppCompatActivity {
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if (songName != null) {
+                    songPos = getSongPos();
+                    int pos = songPos;
+                    int newIndex = pos + 1;
+                    if (newIndex < getArrayLength()) {
+                        songName = songNameArr[newIndex];
+                        songArtist = songArtistArr[newIndex];
+                        songImage = songImageArr[newIndex];
+                    } else {
+                        songName = songNameArr[getArrayLength()];
+                        songArtist = songArtistArr[getArrayLength()];
+                        songImage = songImageArr[getArrayLength()];
+                    }
+                    songNameText.setText(songName);
+                    songArtistText.setText(songArtist);
+                    songImageImg.setImageResource(songImage);
+                }
             }
         });
 
@@ -128,6 +173,24 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(searchButtonIntent);
             }
         });
+
+
+
+    }
+    private int getSongPos() {
+        int pos = 0;
+        for (int i = 0; i < songNameArr.length; i++) {
+            if (songNameArr[i].contains(songName)) {
+                pos = i;
+            }
+        }
+        return pos;
+    }
+
+    private int getArrayLength(){
+        int length;
+        length = songNameArr.length;
+        return length;
     }
 }
 

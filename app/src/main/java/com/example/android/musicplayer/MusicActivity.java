@@ -13,6 +13,7 @@ import java.util.Locale;
 import static com.example.android.musicplayer.MainActivity.songArtistArr;
 import static com.example.android.musicplayer.MainActivity.songImageArr;
 import static com.example.android.musicplayer.MainActivity.songNameArr;
+import static com.example.android.musicplayer.MainActivity.songs;
 
 public class MusicActivity extends AppCompatActivity {
     //Declaration of Variables
@@ -26,20 +27,13 @@ public class MusicActivity extends AppCompatActivity {
 
         //Create a list of songs
 
-        ArrayList<Song> songs = new ArrayList<Song>();
-
-        for (int i = 0; i < songNameArr.length; i++){
-            Song sng = new Song(songNameArr[i], songArtistArr[i], songImageArr[i]);
-            songs.add(sng);
-        }
-
         adapter = new SongAdapter(this, songs);
 
-        ListView listView = (ListView) findViewById(R.id.search_list_view);
+        ListView listView = findViewById(R.id.search_list_view);
 
         listView.setAdapter(adapter);
 
-        editText = (EditText) findViewById(R.id.searchView);
+        editText = findViewById(R.id.searchView);
 
         editText.addTextChangedListener(new TextWatcher() {
             @Override

@@ -51,6 +51,7 @@ public class SongAdapter extends BaseAdapter{
     public long getItemId(int position){
         return position;
     }
+
     /*
      * Created the song adapter for the listView
      */
@@ -69,9 +70,13 @@ public class SongAdapter extends BaseAdapter{
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        /*
-         * Set the songName, songArtist and SongImage on a new List
-         */
+        /**
+         * Set the values on a new list
+         *
+         * @param songName
+         * @param songArtist
+         * @param songImage
+         **/
         holder.songName.setText(songsList.get(position).getSongName());
         holder.songArtist.setText(songsList.get(position).getSongArtist());
         holder.songImage.setImageResource(songsList.get(position).getSongImage());
@@ -80,7 +85,12 @@ public class SongAdapter extends BaseAdapter{
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, ArtistInfoActivity.class);
-                //Insert extra data to use it in the intent
+                /**
+                 * Insert extra data to use it in the intent
+                 * @param songName
+                 * @param songArtist
+                 * @param songImage
+                 * */
                 intent.putExtra("songName",(songsList.get(position).getSongName()));
                 intent.putExtra("songArtist",(songsList.get(position).getSongArtist()));
                 intent.putExtra("songImage",(songsList.get(position).getSongImage()));
@@ -90,10 +100,10 @@ public class SongAdapter extends BaseAdapter{
         return convertView;
     }
 
-    /*
+    /**
      * Filter function
      * Search songs on the ArrayList and filter it.
-     */
+     **/
     public void filter(String charText){
         charText = charText.toLowerCase(Locale.getDefault());
         songsList.clear();

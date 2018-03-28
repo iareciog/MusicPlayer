@@ -7,7 +7,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class ArtistInfoActivity extends AppCompatActivity {
-    //Declare variables
+    /**
+     * Declare variables
+     */
+
     TextView textSongName;
     TextView textSongArtist;
     ImageView imgSongImage;
@@ -26,9 +29,9 @@ public class ArtistInfoActivity extends AppCompatActivity {
         songArtist = i.getStringExtra("songArtist");
         songImage = i.getIntExtra("songImage", R.drawable.ic_player_central_icon);
 
-        textSongName = (TextView) findViewById(R.id.songName);
-        textSongArtist = (TextView) findViewById(R.id.songArtist);
-        imgSongImage = (ImageView) findViewById(R.id.songImage);
+        textSongName = findViewById(R.id.songName);
+        textSongArtist = findViewById(R.id.songArtist);
+        imgSongImage = findViewById(R.id.songImage);
 
         if(songName == null && songArtist == null){
             textSongName.setText(R.string.emptySoundMessage);

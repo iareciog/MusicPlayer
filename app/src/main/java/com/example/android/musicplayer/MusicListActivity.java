@@ -17,7 +17,7 @@ public class MusicListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music_list);
 
-        ArrayList<Song> songs = new ArrayList<Song>();
+        ArrayList<Song> songs = new ArrayList<>();
 
         for (int i = 0; i < songNameArr.length; i++){
             Song sng = new Song(songNameArr[i], songArtistArr[i], songImageArr[i]);
@@ -26,7 +26,7 @@ public class MusicListActivity extends AppCompatActivity {
 
         SongAdapter adapter = new SongAdapter(this, songs);
 
-        ListView listView = (ListView) findViewById(R.id.search_list_view);
+        ListView listView = findViewById(R.id.search_list_view);
 
         listView.setAdapter(adapter);
 
