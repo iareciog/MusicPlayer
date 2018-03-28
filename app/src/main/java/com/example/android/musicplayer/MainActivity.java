@@ -91,9 +91,7 @@ public class MainActivity extends AppCompatActivity {
                         songArtist = songArtistArr[songPos];
                         songImage = songImageArr[songPos];
                     } else {
-                        if(songPos != 0){
-                            songPos = 0;
-                        }
+                        songPos = 0;
                         songName = songNameArr[0];
                         songArtist = songArtistArr[0];
                         songImage = songImageArr[0];
