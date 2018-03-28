@@ -81,8 +81,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (songName != null) {
-                    songPos = songPos - 1;
                     if (songPos > 0) {
+                        songPos = songPos - 1;
                         songName = songNameArr[songPos];
                         songArtist = songArtistArr[songPos];
                         songImage = songImageArr[songPos];
@@ -132,9 +132,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (songName != null) {
-                    songPos = songPos + 1;
-
                     if(songPos < getArrayLength()){
+                        songPos = songPos + 1;
                         songName = songNameArr[songPos];
                         songArtist = songArtistArr[songPos];
                         songImage = songImageArr[songPos];
