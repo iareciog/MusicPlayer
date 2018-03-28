@@ -70,24 +70,30 @@ public class MainActivity extends AppCompatActivity {
         if (songName != null) {
             playStopButton.setImageResource(R.drawable.ic_stop_icon);
 
-            songPos = getSongPos();
-
             songNameText.setText(songName);
             songArtistText.setText(songArtist);
             songImageImg.setImageResource(songImage);
+
+            songPos = getSongPos();
         }
 
         previousButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (songName != null) {
-                    if (songPos > 0) {
+                    if(songPos - 1 >= 0){
                         songPos = songPos - 1;
+                    }else{
+                        songPos = 0;
+                    }
+                    if (songPos > 0) {
                         songName = songNameArr[songPos];
                         songArtist = songArtistArr[songPos];
                         songImage = songImageArr[songPos];
                     } else {
-                        songPos = 0;
+                        if(songPos != 0){
+                            songPos = 0;
+                        }
                         songName = songNameArr[0];
                         songArtist = songArtistArr[0];
                         songImage = songImageArr[0];
@@ -132,21 +138,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (songName != null) {
-                    if(songPos < getArrayLength()){
+                    if(songPos + 1 < getArrayLength()){
                         songPos = songPos + 1;
-                        songName = songNameArr[songPos];
-                        songArtist = songArtistArr[songPos];
-                        songImage = songImageArr[songPos];
-                    }else{
-                        songPos = getArrayLength();
-                        songName = songNameArr[getArrayLength()];
-                        songArtist = songArtistArr[getArrayLength()];
-                        songImage = songImageArr[getArrayLength()];
                     }
-                    songNameText.setText(songName);
-                    songArtistText.setText(songArtist);
-                    songImageImg.setImageResource(songImage);
+                    songName = songNameArr[songPos];
+                    songArtist = songArtistArr[songPos];
+                    songImage = songImageArr[songPos];
                 }
+                songNameText.setText(songName);
+                songArtistText.setText(songArtist);
+                songImageImg.setImageResource(songImage);
             }
         });
 
@@ -182,17 +183,13 @@ public class MainActivity extends AppCompatActivity {
     private int getSongPos() {
         int pos = 0;
         for (int i = 0; i < songNameArr.length; i++) {
-            if (songNameArr[i].contains(songName)) {
+            if (songNameArr[i].matches(songName)) {
                 pos = i;
             }
         }
         return pos;
     }
 
-    private int getArrayLength(){
-        int length;
-        length = songNameArr.length;
-        return length;
-    }
+    private int getArrayLength(){ return songNameArr.length; }
 }
 
