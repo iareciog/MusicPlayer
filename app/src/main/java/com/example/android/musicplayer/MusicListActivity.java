@@ -17,6 +17,11 @@ public class MusicListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music_list);
 
+        /*
+         * Create an new ArrayList<Song>
+         * And add the values for the Arrays, obtained from MainActivity.java
+         */
+
         ArrayList<Song> songs = new ArrayList<>();
 
         for (int i = 0; i < songNameArr.length; i++){
@@ -24,10 +29,11 @@ public class MusicListActivity extends AppCompatActivity {
             songs.add(sng);
         }
 
+        //Create the adapter call
         SongAdapter adapter = new SongAdapter(this, songs);
-
+        //Search the "listView" by id
         ListView listView = findViewById(R.id.search_list_view);
-
+        //Use the adapter in the "listView"
         listView.setAdapter(adapter);
 
     }

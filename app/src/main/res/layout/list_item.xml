@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/SongImage"
-        android:layout_width="50dp"
-        android:layout_height="50dp" />
+        android:layout_width="@dimen/listViewImageSize"
+        android:layout_height="@dimen/listViewImageSize" />
 
     <LinearLayout
         android:layout_width="0dp"

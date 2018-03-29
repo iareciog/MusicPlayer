@@ -16,7 +16,7 @@ import static com.example.android.musicplayer.MainActivity.songNameArr;
 import static com.example.android.musicplayer.MainActivity.songs;
 
 public class MusicActivity extends AppCompatActivity {
-    //Declaration of Variables
+    //Variables
     private SongAdapter adapter;
     private EditText editText;
 

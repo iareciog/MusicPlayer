@@ -16,7 +16,7 @@ import static com.example.android.musicplayer.ArtistInfoActivity.songArtist;
 import static com.example.android.musicplayer.ArtistInfoActivity.songImage;
 
 public class MainActivity extends AppCompatActivity {
-    //Declared variables
+    //Variables
     static String[] songNameArr;
     static String[] songArtistArr;
     static int[] songImageArr;
@@ -77,6 +77,13 @@ public class MainActivity extends AppCompatActivity {
             songPos = getSongPos();
         }
 
+        /**
+         * If previousButton is used
+         * Check if songName exist (Cause if are null, the ArrayList are null too
+         * And if songPos (Who indicate the value position on the Array) - 1 are higher of equal to 0
+         * and update the songName, songArtist, songImage values and set to the Layout.
+         */
+
         previousButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,10 +111,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /**
+         * Simple switch for Play and Stop Button on a Non Functional Music player.
+         */
+
         playStopButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Simple play/stop switch for this player prototype (non functional for a real music player)
                 if (isPlay) {
                     isPlay = false;
                     playStopButton.setImageResource(R.drawable.ic_stop_icon);
@@ -125,6 +135,13 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        /**
+         * If nextButton is used
+         * Check if songName exist (Cause if are null, the ArrayList are null too
+         * And if songPos (Who indicate the value position on the Array) + 1 are lower than Array Length
+         * and update the songName, songArtist, songImage values and set to the Layout.
+         */
 
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -17,7 +17,7 @@ import java.util.Locale;
 
 
 public class SongAdapter extends BaseAdapter{
-    //Declared variables
+    //Variables
     private Context mContext;
     private LayoutInflater inflater;
     private final ArrayList<Song> songs;
@@ -55,9 +55,9 @@ public class SongAdapter extends BaseAdapter{
     /**
      * Auto-generated Song Adapter for the listView
      *
-     * @param position -> position
-     * @param convertView -> View
-     * @param parent -> ViewGroup
+     * @param position -> position used for explore the ArrayList
+     * @param convertView -> convertView used for find and set values
+     * @param parent
      *
      * @return adapter view
      **/

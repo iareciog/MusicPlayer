@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MusicPlayer</string>
+    <string name="songList_name">Toda la Musica</string>
+    <string name="songSearch_name">Buscar</string>
+    <string name="playerIcon_SongIcon">Icono de Cancion</string>
+    <string name="playerButtons_previous_description">Anterior</string>
+    <string name="playerButtons_playStop_description">Play/Stop</string>
+    <string name="playerButtons_forward_description">Adelante</string>
+    <string name="playerButtons_rewind_description">Atras</string>
+    <string name="playerButtons_next_description">Siguiente</string>
+    <string name="playerButtons_search_description">A la Seccion de Busqueda</string>
+    <string name="playerButtons_SongList_description">a la lista de canciones</string>
+    <string name="SearchBoxHint">Buscar Canciones</string>
+    <string name="songDescription">Ejemplo de descripcion de cancion</string>
+    <string name="emptySoundMessage">Ninguna cancion ha sido seleccionada</string>
+    <string name="toPlayerButton">Al reproductor</string>
+</resources>

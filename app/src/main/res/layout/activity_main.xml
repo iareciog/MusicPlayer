@@ -8,14 +8,9 @@
 
     <ImageView
         android:id="@+id/songImage"
-        android:layout_width="270dp"
-        android:layout_height="270dp"
+        style="@style/PlayerImageStyle"
         android:contentDescription="@string/playerIcon_SongIcon"
-        android:layout_centerHorizontal="true"
-        android:scaleType="fitCenter"
-        android:src="@drawable/ic_player_central_icon"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"/>
+        android:src="@drawable/ic_player_central_icon" />
 
     <LinearLayout
         android:id="@+id/artist_song_id"
@@ -23,7 +18,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_below="@id/songImage"
-        android:layout_marginBottom="20dp">
+        android:layout_marginBottom="@dimen/marginUpDown">
 
         <TextView
             android:id="@+id/songName"
@@ -49,8 +44,8 @@
         android:layout_below="@id/artist_song_id"
         android:gravity="center"
         android:orientation="horizontal"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginBottom="@dimen/playerButtonsMarginBottom"
+        android:layout_marginTop="@dimen/playerButtonsMarginTop"
         android:layout_alignParentBottom="true">
 
         <ImageView
@@ -63,8 +58,7 @@
             android:layout_width="1dp"
             android:layout_height="wrap_content"
             android:background="@android:color/black"
-            android:layout_marginTop="3dp"
-            android:layout_marginBottom="3dp"/>
+            style="PlayerButtonsViewStyle"/>
 
         <ImageView
             android:id="@+id/previous_button"
@@ -100,8 +94,7 @@
             android:layout_width="1dp"
             android:layout_height="wrap_content"
             android:background="@android:color/black"
-            android:layout_marginTop="3dp"
-            android:layout_marginBottom="3dp"/>
+            style="PlayerButtonsViewStyle"/>
 
         <ImageView
             android:id="@+id/artistInfo_button"

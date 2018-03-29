@@ -11,13 +11,15 @@
     <string name="playerButtons_forward_description">Forward Button</string>
     <string name="playerButtons_next_description">Next Button</string>
     <string name="playerButtons_search_description">to Search Section</string>
-    <string name="playerButtons_SongList_description">to song list section</string>
+    <string name="playerButtons_SongList_description">to song list</string>
 
     <!-- Song Search Strings -->
 
     <string name="SearchBoxHint">Search Songs</string>
 
-    <string name="songDescription">Song description exaple</string>
+    <string name="songDescription">Song description example</string>
     <string name="emptySoundMessage">No sound are selected</string>
+
+    <string name="toPlayerButton">Go to player</string>
 
 </resources>

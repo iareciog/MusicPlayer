@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="marginRightLeft">8dp</dimen>
+    <dimen name="marginUpDown">20dp</dimen>
+    <dimen name="playerImageLayout">270dp</dimen>
+    <dimen name="listViewImageSize">50dp</dimen>
+    <dimen name="playerButtonsMarginBottom">20dp</dimen>
+    <dimen name="playerButtonsMarginTop">160dp</dimen>
+    <dimen name="viewMarginUpDown">3dp</dimen>
+</resources>
