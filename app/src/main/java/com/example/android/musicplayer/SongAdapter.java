@@ -15,6 +15,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+/*
+ * This has been completed thanks to the following tutorial:
+ * http://www.androidbegin.com/tutorial/android-search-listview-using-filter/
+ */
 
 public class SongAdapter extends BaseAdapter{
     //Variables
