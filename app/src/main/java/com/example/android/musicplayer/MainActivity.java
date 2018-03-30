@@ -36,9 +36,15 @@ public class MainActivity extends AppCompatActivity {
 
         //Created 3 arrays with the info in every position
 
-        songNameArr = new String[]{"song", "1song", "2song", "3song"};
-        songArtistArr = new String[]{"artist", "artist3", "artist3", "artist2"};
-        songImageArr = new int[]{R.drawable.ic_music_icon, R.drawable.ic_music_icon, R.drawable.ic_music_icon, R.drawable.ic_music_icon};
+        songNameArr = new String[]{"song", "1song", "2song", "3song", "4song", "5song", "6song",
+                "7song", "8song", "9song", "10song"};
+
+        songArtistArr = new String[]{"artist", "artist3", "artist3", "artist2", "artist1", "artist3",
+                "artist4", "artist1", "artist2", "artist", "artist3"};
+
+        songImageArr = new int[]{R.drawable.ic_music_icon, R.drawable.ic_music_2, R.drawable.ic_music_icon,
+                R.drawable.ic_music_2, R.drawable.ic_music_icon, R.drawable.ic_music_icon, R.drawable.ic_music_2,
+                R.drawable.ic_music_2, R.drawable.ic_music_icon, R.drawable.ic_music_icon, R.drawable.ic_music_2 };
 
         //Get the objects used in this program.
 
@@ -77,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
             songPos = getSongPos();
         }
 
-        /**
+        /*
          * If previousButton is used
          * Check if songName exist (Cause if are null, the ArrayList are null too
          * And if songPos (Who indicate the value position on the Array) - 1 are higher of equal to 0
@@ -111,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        /**
+        /*
          * Simple switch for Play and Stop Button on a Non Functional Music player.
          */
 
@@ -136,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        /**
+        /*
          * If nextButton is used
          * Check if songName exist (Cause if are null, the ArrayList are null too
          * And if songPos (Who indicate the value position on the Array) + 1 are lower than Array Length
